@@ -298,19 +298,6 @@ npm run coverage
 - **移动端优化**：PWA支持
 - **缓存策略**：智能缓存
 
-## 🔗 相关链接
-
-- [项目主页](https://github.com/your-repo/qrcode-workshop)
-- [在线演示](https://qrcode.example.com)
-- [问题反馈](https://github.com/your-repo/qrcode-workshop/issues)
-- [更新日志](CHANGELOG.md)
-
-## 👥 维护团队
-
-- **主要维护者**：QRCode Workshop Team
-- **核心开发者**：@your-username
-- **设计贡献**：@design-team
-- **测试团队**：@qa-team
 
 ---
 
