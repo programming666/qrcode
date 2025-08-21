@@ -79,7 +79,7 @@ class QRCodeWorkshop {
 
     switchType(type) {
         this.currentType = type;
-        
+
         // 更新按钮状态
         document.querySelectorAll('.type-btn').forEach(btn => {
             btn.classList.remove('active');
@@ -144,7 +144,7 @@ class QRCodeWorkshop {
             // 加密数据
             const encoder = new TextEncoder();
             const dataBuffer = encoder.encode(JSON.stringify(data));
-            
+
             // 使用AES-GCM加密，获取加密数据和认证标签
             const encryptedData = await window.crypto.subtle.encrypt(
                 {
@@ -271,24 +271,26 @@ class QRCodeWorkshop {
 
     getContent() {
         switch (this.currentType) {
-            case 'text':
-                return document.getElementById('text-content').value.trim();
-            case 'url':
-                const url = document.getElementById('url-content').value.trim();
-                return url ? (url.startsWith('http') ? url : `https://${url}`) : '';
-            case 'wifi':
-                const ssid = document.getElementById('wifi-ssid').value.trim();
-                const password = document.getElementById('wifi-password').value;
-                const security = document.getElementById('wifi-security').value;
-                
-                if (!ssid) return '';
-                return {
-                    ssid,
-                    password,
-                    security
-                };
-            default:
-                return '';
+        case 'text':
+            return document.getElementById('text-content').value.trim();
+        case 'url': {
+            const url = document.getElementById('url-content').value.trim();
+            return url ? (url.startsWith('http') ? url : `https://${url}`) : '';
+        }
+        case 'wifi': {
+            const ssid = document.getElementById('wifi-ssid').value.trim();
+            const password = document.getElementById('wifi-password').value;
+            const security = document.getElementById('wifi-security').value;
+
+            if (!ssid) return '';
+            return {
+                ssid,
+                password,
+                security
+            };
+        }
+        default:
+            return '';
         }
     }
 
@@ -296,7 +298,7 @@ class QRCodeWorkshop {
         const qrImage = document.getElementById('qr-image');
         const placeholder = document.getElementById('qr-placeholder');
         const actions = document.getElementById('result-actions');
-        
+
         if (!this.logoData) {
             // 没有Logo，直接显示二维码
             qrImage.src = qrDataUrl;
@@ -419,7 +421,7 @@ class QRCodeWorkshop {
         document.getElementById('result-actions').style.display = 'none';
 
         this.logoData = null;
-        
+
         // 重置导出格式
         document.getElementById('export-format').value = 'png';
         this.handleExportFormatChange({ target: { value: 'png' } });
@@ -430,7 +432,7 @@ class QRCodeWorkshop {
         const pngBtn = document.getElementById('download-png');
         const svgBtn = document.getElementById('download-svg');
         const pdfBtn = document.getElementById('download-pdf');
-        
+
         pngBtn.style.display = format === 'png' ? 'inline-block' : 'none';
         svgBtn.style.display = format === 'svg' ? 'inline-block' : 'none';
         pdfBtn.style.display = format === 'pdf' ? 'inline-block' : 'none';
@@ -442,14 +444,14 @@ class QRCodeWorkshop {
         const size = parseInt(document.getElementById('qr-size').value);
         canvas.width = size;
         canvas.height = size;
-        
+
         const qrImage = document.getElementById('qr-image');
-        
+
         return new Promise((resolve, reject) => {
             const img = new Image();
             img.onload = () => {
                 ctx.drawImage(img, 0, 0, size, size);
-                
+
                 // 创建PDF
                 const { jsPDF } = window.jspdf;
                 const pdf = new jsPDF({
@@ -457,7 +459,7 @@ class QRCodeWorkshop {
                     unit: 'mm',
                     format: [size * 0.264583, size * 0.264583] // 像素转毫米
                 });
-                
+
                 // 添加二维码到PDF
                 pdf.addImage(
                     canvas.toDataURL('image/png'),
@@ -467,7 +469,7 @@ class QRCodeWorkshop {
                     size * 0.264583,
                     size * 0.264583
                 );
-                
+
                 // 下载PDF
                 pdf.save('qrcode.pdf');
                 resolve();

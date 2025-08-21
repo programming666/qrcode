@@ -1,0 +1,28 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "semi": ["error", "always"],
+    "quotes": ["error", "single"],
+    "indent": ["error", 4],
+    "no-trailing-spaces": "error",
+    "eol-last": "error"
+  },
+  "ignorePatterns": [
+    "node_modules/",
+    "public/js/jspdf.min.js",
+    "public/js/turnstile.js"
+  ]
+}

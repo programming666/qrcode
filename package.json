@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js",
+    "lint": "eslint server.js public/js/app.js generate-keys.js",
+    "lint:fix": "eslint server.js public/js/app.js generate-keys.js --fix"
   },
   "keywords": [
     "qrcode",
@@ -24,6 +26,7 @@
     "qrcode": "^1.5.3"
   },
   "devDependencies": {
+    "eslint": "^8.57.1",
     "nodemon": "^3.0.1"
   }
 }
