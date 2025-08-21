@@ -266,8 +266,9 @@ DEBUG=qrcode:*
 ### 开发环境
 1. Fork 项目仓库
 2. 创建功能分支
-3. 提交代码变更
-4. 创建Pull Request
+3. 使用eslint检查
+4. 提交代码变更
+5. 创建Pull Request
 
 ### 代码规范
 - 使用ESLint进行代码检查
@@ -275,13 +276,10 @@ DEBUG=qrcode:*
 - 编写单元测试
 - 更新相关文档
 
-### 测试覆盖
+### 测试
 ```bash
 # 运行测试
-npm test
-
-# 检查代码覆盖率
-npm run coverage
+npm lint
 ```
 
 ## 📊 性能指标
