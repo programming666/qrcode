@@ -118,7 +118,7 @@ app.post('/api/generate', async (req, res) => {
         }
 
         // 解密请求数据
-        let decryptedData,hello,qwq;
+        let decryptedData;
         try {
             decryptedData = decryptData(encrypted);
         } catch (error) {
